@@ -1,4 +1,4 @@
-"""Study C — resolve problem 2: the Born rule is a THEOREM of the stochastic
+"""Study C — address problem 2: the Born rule is a THEOREM of the stochastic
 (Diósi–Penrose-type) collapse dynamics, not an extra assumption.
 
 The norm-preserving collapse SDE (Itô form) for a Hermitian collapse operator A

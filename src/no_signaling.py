@@ -1,4 +1,4 @@
-"""Study D — resolve problem 3: 'the wave function becomes a real, observable
+"""Study D — address problem 3: 'the wave function becomes a real, observable
 quantity, so entanglement + gravity gives faster-than-light signaling.'
 
 Setup (the sharpest version of the article's objection, cf. Eppley–Hannah and

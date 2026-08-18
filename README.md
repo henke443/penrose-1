@@ -1,4 +1,4 @@
-# penrose-1 — Resolving the open problems of Schrödinger–Newton collapse
+# penrose-1 — The three "open problems" of Schrödinger–Newton collapse: a numerical tour of the stochastic completion
 
 This project addresses, with explicit mathematics and numerical demonstrations, the three
 "Problems and open matters" listed in the Wikipedia article on the
@@ -9,11 +9,11 @@ This project addresses, with explicit mathematics and numerical demonstrations, 
 2. **Lack of any apparent reason for the Born rule**
 3. **Promotion of the wave function to an observable (real) quantity** (→ superluminal signaling)
 
-**Headline result:** all three criticisms apply to the *deterministic* SN equation used
-*alone* as a collapse mechanism — and all three are resolved once Penrose's idea is
-completed into its stochastic form (Diósi–Penrose dynamics with Tilloy–Diósi gravitational
-sourcing). Each resolution is demonstrated numerically in this repository and written up in
-[REPORT.md](REPORT.md).
+**What this shows:** all three criticisms apply to the *deterministic* SN equation used
+*alone* as a collapse mechanism — and none of them arises once Penrose's idea is completed
+into its stochastic form (Diósi–Penrose dynamics with Tilloy–Diósi gravitational sourcing).
+This is a synthesis and numerical demonstration of known results, not new physics; each
+demonstration lives in this repository and is written up in [REPORT.md](REPORT.md).
 
 The theoretical ingredients are standard collapse-model results (Gisin 1984; Diósi 1987/89;
 Pearle 1989; Tilloy–Diósi 2016 — full references in the report); the contribution here is
@@ -23,9 +23,9 @@ numerically.
 | Study | Problem | File | Result |
 |---|---|---|---|
 | A | reproduce #1 | [src/sn_radial.py](src/sn_radial.py) | deterministic SN: packet settles to ground state but a runaway fraction escapes for good |
-| B | resolve #1 | [src/tails_1d.py](src/tails_1d.py) | stochastic localization → far-field probability decays exponentially instead of persisting |
-| C | resolve #2 | [src/born_rule.py](src/born_rule.py) | Born rule is a martingale **theorem** of the collapse SDE; Monte-Carlo verified |
-| D | resolve #3 | [src/no_signaling.py](src/no_signaling.py) | mean-field SN gravity signals (O(1)); the stochastic completion signals exactly 0 |
+| B | address #1 | [src/tails_1d.py](src/tails_1d.py) | stochastic localization → far-field probability decays exponentially instead of persisting |
+| C | address #2 | [src/born_rule.py](src/born_rule.py) | Born rule is a martingale **theorem** of the collapse SDE; Monte-Carlo verified |
+| D | address #3 | [src/no_signaling.py](src/no_signaling.py) | mean-field SN gravity signals (O(1)); the stochastic completion signals exactly 0 |
 
 ## Reproduce
 

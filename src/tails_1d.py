@@ -1,4 +1,4 @@
-"""Study B — resolve problem 1: stochastic localization removes the runaway
+"""Study B — address problem 1: stochastic localization removes the runaway
 probability that the deterministic Schrödinger–Newton equation leaves behind.
 
 1D analogue of the SN system with a softened-Coulomb self-gravity kernel

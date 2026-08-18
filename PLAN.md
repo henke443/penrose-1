@@ -1,4 +1,4 @@
-# Penrose-1: Resolving the open problems of the Schrödinger–Newton collapse interpretation
+# Penrose-1: Study plan — the "open problems" of the Schrödinger–Newton collapse interpretation
 
 Goal: address, with explicit mathematics and numerical demonstrations, the three problems
 listed in the Wikipedia article on the Schrödinger–Newton (SN) equation under

@@ -17,9 +17,10 @@
 \newcommand{\ket}[1]{|#1\rangle}
 \newcommand{\tr}{\operatorname{Tr}}
 
-\title{Resolving the ``Problems and Open Matters'' of the\\
-Schr\"odinger--Newton Collapse Interpretation:\\
-{\large a numerical demonstration of the known stochastic completion}}
+\title{The Three ``Open Problems'' of the\\
+Schr\"odinger--Newton Collapse Interpretation,\\
+and How the Stochastic Completion Addresses Them:\\
+{\large a numerical tour of known results}}
 \author{penrose-1 numerical study}
 \date{August 18, 2026}
 
@@ -35,7 +36,7 @@ signaling. All three criticisms target the \emph{deterministic} SN equation used
 \emph{alone} as the collapse mechanism. We construct the completion the article itself
 gestures at --- Penrose's collapse criterion realized as stochastic Di\'osi--Penrose (DP)
 dynamics with Tilloy--Di\'osi gravitational sourcing --- and demonstrate analytically and
-numerically that within it each problem is resolved: the runaway probability decays
+numerically that within it none of the three problems arises: the runaway probability decays
 exponentially instead of persisting; the Born rule becomes a martingale \emph{theorem} of
 the dynamics --- the standard Gisin--Pearle property of collapse SDEs --- Monte-Carlo
 verified at $\chi^2 = 10.5$ over $9$ d.o.f.; and the
@@ -43,7 +44,8 @@ faster-than-light signal, which we reproduce at trace distance $0.585$ for mean-
 sourcing, vanishes identically (machine precision, $\le 1.2\times10^{-15}$) because the
 ensemble dynamics is linear. None of the theoretical ingredients is new --- they are drawn
 from the collapse-model literature of 1984--2016 --- the contribution is their explicit
-assembly against the article's three criticisms, with quantitative verification. We state
+assembly against the article's three criticisms, with quantitative verification: a
+synthesis of known results, not new physics. We state
 precisely what remains open (relativistic completion, experimental confirmation).
 \end{abstract}
 
@@ -117,7 +119,7 @@ packet under the linear Schr\"odinger equation disperses to $99.9\%$
   \label{fig:a}
 \end{figure}
 
-\paragraph{Resolved (Study B).}
+\paragraph{Addressed in the completion (Study B).}
 In a 1D self-gravitating analogue (softened kernel
 $\Phi = -g\int \rho(x')/\sqrt{(x-x')^2+a^2}\,\dd x'$; attractive but non-confining) the
 deterministic equation \emph{saturates} at a residual tail probability of $5.2\%$ beyond
@@ -180,7 +182,9 @@ $\Pr(P\to 1) = \lim_t \mathbb{E}[P(t)] = P(0)$.
 
 The measurement problem asked exactly for this: \emph{why the dot appears at different
 positions with $|\psi|^2$ probabilities}. Outcome randomness is objective dynamical noise;
-the $|\psi|^2$ weighting follows with no extra postulate. Numerically
+the $|\psi|^2$ weighting follows with no extra postulate --- within the SSE class (one can
+still hold that adopting a norm-preserving stochastic unraveling is itself where the Born
+structure enters; that debate is not closed here). Numerically
 (Fig.~\ref{fig:c}): two independent integrations (the scalar reduction
 Eq.~\eqref{eq:mart}, $2\times10^4$ trajectories per amplitude; and the full renormalized
 two-component state SDE, $4\times10^3$ trajectories) across nine initial weights give
@@ -211,7 +215,7 @@ ensembles differ at trace distance up to $0.585$ (numerically exact evolution), 
 signal strength is set by Bob's \emph{local} gravity --- independent of the separation:
 a genuine causality violation, and the sense in which $\psi$ has become ensemble-observable.
 
-\paragraph{Resolved (Study D(ii)/(iii)).}
+\paragraph{Addressed in the completion (Study D(ii)/(iii)).}
 With operator sourcing $H_{\mathrm{int}} = \Pi_L\otimes V_L + \Pi_R\otimes V_R$ and DP
 collapse of $B$ at rate $\lambda$, the ensemble dynamics is the linear Lindblad equation, so
 Alice's local trace-preserving operations cannot move $\tr_A\rho$:
@@ -255,15 +259,15 @@ Eppley--Hannah-type thought experiments~\cite{eppley77} by construction.
     \toprule
     \# & Problem & Status & Evidence \\
     \midrule
-    1 & Residual probability far from collapse point & Resolved & Studies A, B \\
-    2 & No apparent reason for the Born rule & Resolved (theorem) & Study C \\
-    3 & $\psi$ observable $\Rightarrow$ superluminal signaling & Resolved (exact) & Study D \\
+    1 & Residual probability far from collapse point & Does not arise & Studies A, B \\
+    2 & No apparent reason for the Born rule & Does not arise (theorem) & Study C \\
+    3 & $\psi$ observable $\Rightarrow$ superluminal signaling & Does not arise (exact) & Study D \\
     \bottomrule
   \end{tabular}
   \caption{Status of the three listed problems in the completed model.}
 \end{table}
 
-\noindent The resolutions hold within the nonrelativistic completed model (DP collapse at
+\noindent These statements hold within the nonrelativistic completed model (DP collapse at
 Penrose's rate, Tilloy--Di\'osi sourcing, SN retained as mean-field limit). A fully
 relativistic collapse theory remains open; exact no-signaling is its necessary
 precondition. The model is falsifiable and already constrained: the parameter-free DP

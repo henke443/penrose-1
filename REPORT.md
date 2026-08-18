@@ -1,4 +1,4 @@
-# Resolving the "Problems and open matters" of the Schrödinger–Newton collapse interpretation
+# The "Problems and open matters" of Schrödinger–Newton collapse, and how the stochastic completion addresses them: a numerical tour
 
 **Project:** penrose-1 · **Date:** 2026-08-18 · **Status:** all three problems addressed; numerical evidence in `figures/` and `results/`
 
@@ -18,8 +18,8 @@ collapse mechanism. The article itself points at the way out — *"It might be p
 model based on Penrose's idea could provide such an explanation"* and *"whether this problem
 can be resolved by applying the right collapse prescription, yet to be found, consistently to
 the full quantum system"*. This project constructs that completion explicitly and
-demonstrates, analytically and numerically, that within it **each of the three problems is
-resolved**:
+demonstrates, analytically and numerically, that within it **none of the three problems
+arises**:
 
 - the deterministic SN equation is kept as the **mean-field / many-body limit** (where it is
   experimentally relevant and unproblematic), and
@@ -35,12 +35,15 @@ operator sourcing to Tilloy–Diósi (2016) — see the References at the end. W
 adds is the explicit assembly of those known pieces against the article's three criticisms,
 plus the numerical demonstrations.
 
-What is *not* claimed: that fundamental physics is finished. The model is nonrelativistic,
-its relativistic completion is open, and its parameters are constrained (not yet confirmed)
-by experiment. Section 6 states these limits precisely. But the three listed problems, as
-stated, are problems *of the deterministic-SN-only reading*, and they disappear in the
-completed model — which is the strongest sense in which problems of this kind can be
-"solved" short of experimental confirmation of gravitational collapse itself.
+What is *not* claimed: that fundamental physics is finished, or that anything here amounts
+to a research-level resolution of an open problem — a reader who already knows the
+collapse-model literature will find no new result in this document. The model is
+nonrelativistic, its relativistic completion is open, and its parameters are constrained
+(not yet confirmed) by experiment. Section 6 states these limits precisely. The statement
+defended here is narrower and exact: the three listed problems, as stated, are problems
+*of the deterministic-SN-only reading*, and they do not arise in the known stochastic
+completion. "Addressed" below means exactly that — absent in the completed model — never
+"settled as a matter of physics".
 
 ---
 
@@ -105,7 +108,7 @@ r = 25 (≫ the ground-state radius) or already absorbed at infinity at t = 1500
 actually absorbed at the boundary), and it never comes back. The linear Schrödinger equation disperses ≈ 99.9 % — confirming the article's
 remark that SN alone at least *decelerates* the spreading but cannot finish the job.
 
-**The resolution (Study B, `src/tails_1d.py`, `figures/fig_b_tails.png`).**
+**How the completion addresses it (Study B, `src/tails_1d.py`, `figures/fig_b_tails.png`).**
 In a 1D self-gravitating analogue (softened −1/r kernel: attractive, non-confining, so
 probability *can* escape) the same phenomenology appears: the deterministic run **saturates**
 at a residual tail probability of **5.2 %** beyond d = 10 from the collapse centre — a
@@ -129,7 +132,7 @@ is — measured relative to the trajectory's own collapse centre, and why λ can
 arbitrarily high without observable heating (this is exactly the effect current experiments
 constrain; see §6).
 
-Two further points close this problem completely:
+Two further points complete the picture:
 
 - *Environment.* The article notes the effect "might disappear if the environment is taken
   into account". The DP noise term **is** an intrinsic environment of exactly this kind —
@@ -149,7 +152,7 @@ Two further points close this problem completely:
 
 ## 3. Problem 2 — "Lack of any apparent reason for the Born rule"
 
-**The resolution (Study C, `src/born_rule.py`, `figures/fig_c_born_rule.png`).**
+**How the completion addresses it (Study C, `src/born_rule.py`, `figures/fig_c_born_rule.png`).**
 In the completed model the Born rule is not an assumption — it is a **theorem** (fact F2).
 For a two-branch superposition ψ = c_L|L⟩ + c_R|R⟩ with A|L⟩ = +|L⟩, A|R⟩ = −|R⟩, Itô
 calculus applied to (SSE) gives, for the branch weight P = |c_L|²:
@@ -181,7 +184,10 @@ weighting follows from the structure of the SSE with no extra postulate.
 *Why this is a legitimate "reason for the Born rule":* the class of collapse SDEs of form
 (SSE) is essentially forced — it is the unique norm-preserving unraveling structure whose
 ensemble level is linear (no-signaling, F1). Within that class the Born rule is derived, not
-postulated. What Penrose's proposal contributes is the *physical identity* of the noise
+postulated. (One can still object that adopting a norm-preserving stochastic unraveling is
+itself where the |ψ|² structure enters — on that reading the argument relocates the
+postulate rather than eliminating every choice. This is a live debate in the literature,
+not a question this project closes.) What Penrose's proposal contributes is the *physical identity* of the noise
 (gravitational, rate ΔE_G/ħ); what the SSE structure contributes is the statistics. Together
 they answer the article's question: a model based on Penrose's idea in which Born's rule
 arises naturally — the very possibility the article says "might" exist, made concrete.
@@ -205,7 +211,7 @@ it does not fall off with separation: this is a genuine causality violation, not
 force.) The wave function has indeed become ensemble-observable — the article's criticism is
 exactly right about mean-field sourcing.
 
-**The resolution (Study D (ii)/(iii)).** In the completed model, gravity enters as the
+**How the completion addresses it (Study D (ii)/(iii)).** In the completed model, gravity enters as the
 operator H_int = Π_L⊗V_L + Π_R⊗V_R (the potential is *entangled* with B's position — the
 Tilloy–Diósi sourcing), and B's superposition collapses locally under DP noise at rate λ.
 The ensemble dynamics is the linear Lindblad equation, so Alice's local trace-preserving
@@ -249,13 +255,13 @@ causal by construction.
 
 | # | Problem (article's wording) | Status in completed model | Evidence |
 |---|---|---|---|
-| 1 | Excessive residual probability far from the collapse point | **Resolved** — residual probability decays exponentially; deterministic runaway reproduced and eliminated | Studies A, B |
-| 2 | Lack of any apparent reason for the Born rule | **Resolved** — Born rule is a martingale theorem of the dynamics; verified to χ² = 10.5/9 | Study C |
-| 3 | Wave function promoted to observable quantity / superluminal signaling | **Resolved** — ensemble dynamics linear ⇒ signal exactly 0 (machine precision); mean-field pathology reproduced for contrast; ψ real per trajectory yet operationally hidden | Study D |
+| 1 | Excessive residual probability far from the collapse point | **Does not arise** — deterministic runaway reproduced; residual probability decays exponentially in the completion | Studies A, B |
+| 2 | Lack of any apparent reason for the Born rule | **Does not arise** — Born rule is a martingale theorem of the dynamics; verified to χ² = 10.5/9 | Study C |
+| 3 | Wave function promoted to observable quantity / superluminal signaling | **Does not arise** — ensemble dynamics linear ⇒ signal exactly 0 (machine precision); mean-field pathology reproduced for contrast; ψ real per trajectory yet operationally hidden | Study D |
 
 ## 6. Honest boundary of the claims
 
-1. **Scope.** The resolutions hold within the nonrelativistic completed model (DP collapse +
+1. **Scope.** These statements hold within the nonrelativistic completed model (DP collapse +
    Tilloy–Diósi sourcing). That model is mathematically consistent, contains Penrose's
    collapse criterion as its rate, keeps the SN equation as its mean-field limit, and is
    free of all three listed problems. No claim is made that nature certainly works this way.
@@ -270,7 +276,8 @@ causal by construction.
    scientific progress over an open conceptual problem.
 4. **Wikipedia's text is accurate** about the deterministic SN equation alone; nothing here
    contradicts the cited numerical studies — Study A reproduces them. What this project
-   shows is that the three "open matters" have a concrete, working closure along exactly the
+   shows is that the three "open matters" have a concrete, working answer — drawn from the
+   published literature — along exactly the
    lines the article gestures at ("the right collapse prescription ... applied consistently
    to the full quantum system").
 
