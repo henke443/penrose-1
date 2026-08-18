@@ -1,0 +1,24 @@
+# Python virtual environment
+.venv/
+venv/
+
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.toc
+*.pdf
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
