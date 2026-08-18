@@ -70,13 +70,14 @@ def run_state_sde(p0, n_traj=4000):
 
 def main():
     print("== Study C: Born rule from the collapse SDE ==")
-    freqs, errs, freqs_state = [], [], []
+    freqs, errs, freqs_state, resolved_fracs = [], [], [], []
     martingale_curve = None
     hist_snapshots = None
     for p0 in P0_LIST:
         record = abs(p0 - 0.3) < 1e-9
         P_fin, means, snaps = run_scalar(p0, record=record)
         resolved = np.mean(np.minimum(P_fin, 1.0 - P_fin) < 1e-3)
+        resolved_fracs.append(float(resolved))
         f = float(np.mean(P_fin > 0.5))
         e = float(np.sqrt(f * (1 - f) / len(P_fin)))
         freqs.append(f)
@@ -102,6 +103,7 @@ def main():
         "freq_state_sde": freqs_state,
         "chi2_9dof": chi2, "max_deviation_sigma": max_dev_sigma,
         "martingale_drift": mart_drift,
+        "resolved_frac": resolved_fracs, "min_resolved_frac": min(resolved_fracs),
     })
 
     fig, axes = plt.subplots(1, 3, figsize=(11.5, 3.4))

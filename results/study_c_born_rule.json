@@ -49,5 +49,17 @@
   ],
   "chi2_9dof": 10.528010433369445,
   "max_deviation_sigma": 2.10117966594689,
-  "martingale_drift": 0.00010000000001303411
+  "martingale_drift": 0.00010000000001303411,
+  "resolved_frac": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "min_resolved_frac": 1.0
 }

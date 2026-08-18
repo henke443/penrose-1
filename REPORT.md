@@ -29,6 +29,12 @@ resolved**:
   the collapsing state in the operator-valued (Tilloy–Diósi) way, not from the raw
   expectation value ⟨ψ|ρ̂|ψ⟩.
 
+None of these ingredients is new: the collapse SDE and its Born-rule martingale property go
+back to Gisin (1984) and Pearle (1989), the DP dynamics to Diósi (1987, 1989), and the
+operator sourcing to Tilloy–Diósi (2016) — see the References at the end. What this project
+adds is the explicit assembly of those known pieces against the article's three criticisms,
+plus the numerical demonstrations.
+
 What is *not* claimed: that fundamental physics is finished. The model is nonrelativistic,
 its relativistic completion is open, and its parameters are constrained (not yet confirmed)
 by experiment. Section 6 states these limits precisely. But the three listed problems, as
@@ -89,13 +95,14 @@ self-consistent Newtonian potential, and an absorbing boundary that measures exa
 probability escaping to infinity. Validation: the ground state computed by imaginary time
 has chemical potential **μ = −0.1637**, matching the Moroz–Penrose–Tod literature value
 (−0.163), and satisfies the Choquard virial identities E = −T (ratio 1.022) and μ = 3E
-(ratio 0.993).
+(ratio 0.993). The ~2 % virial residual is the honest discretization accuracy bar on these
+numbers.
 
 A wide wave packet (σ = 6 vs ground-state r_rms = 4.6) indeed "collapses": the overlap with
 the stationary ground state rises to ≈ 0.91. But, exactly as the numerical studies cited by
 the article find, **a small portion runs away**: ≈ 2.8 % of the probability is beyond
-r = 25 (≫ the ground-state radius) or already absorbed at infinity at t = 1500, and it never
-comes back. The linear Schrödinger equation disperses ≈ 99.9 % — confirming the article's
+r = 25 (≫ the ground-state radius) or already absorbed at infinity at t = 1500 (0.66 % was
+actually absorbed at the boundary), and it never comes back. The linear Schrödinger equation disperses ≈ 99.9 % — confirming the article's
 remark that SN alone at least *decelerates* the spreading but cannot finish the job.
 
 **The resolution (Study B, `src/tails_1d.py`, `figures/fig_b_tails.png`).**
@@ -105,11 +112,14 @@ at a residual tail probability of **5.2 %** beyond d = 10 from the collapse cent
 fixed, permanent runaway fraction (the linear equation is at 13.3 % and still slowly
 dispersing toward 1). Adding the DP localization terms of (SSE) with A = x̂ changes the
 character of the solution qualitatively: the ensemble-averaged residual probability
-**plunges exponentially** — at fitted rate 1.6 per time unit for λ = 0.01, five orders of
-magnitude down to ~3×10⁻⁷ by t ≈ 8 — and then stays pinned at a small noise-sustained floor
-set by the localization–dispersion balance: final values **3.0×10⁻⁴** (λ = 0.003) and
-**4.9×10⁻⁶** (λ = 0.01), i.e. **10⁴ times below** the deterministic plateau at the stronger
-coupling, and lower still for larger λ. The runaway probability is not merely diluted; it is
+(96 trajectories per λ) **plunges exponentially** — at fitted rate 1.6 per time unit for
+λ = 0.01, five orders of magnitude down to ~3×10⁻⁷ by t ≈ 8 — and then settles at a small
+noise-sustained level set by the localization–dispersion balance: final values **3.0×10⁻⁴**
+(λ = 0.003) and **4.9×10⁻⁶** (λ = 0.01), i.e. **10⁴ times below** the deterministic plateau
+at the stronger coupling and a factor ~1.7×10² at the weaker. The level is not strictly
+stationary: after its minimum it drifts back up by roughly an order of magnitude over the
+run as the soliton heats and its centre diffuses — it stays orders of magnitude below the
+deterministic plateau throughout. The runaway probability is not merely diluted; it is
 dynamically suppressed, because the localization term damps a far-away component at a rate
 growing with its squared distance from the bulk (the observed initial rate ~1.6 matches the
 λℓ² scale of the ejecta distances). A real physical feature surfaced by the simulation:
@@ -146,6 +156,8 @@ calculus applied to (SSE) gives, for the branch weight P = |c_L|²:
 
     dP = 4√λ · P(1−P) · dW.
 
+This is the standard Gisin–Pearle martingale property of norm-preserving collapse SDEs
+(Gisin 1984; Pearle 1989; reviewed in Bassi et al. 2013), stated here in the DP setting.
 Proof of the Born rule in three lines:
 1. P is a martingale: E[P(t)] = P(0) (no dt term above).
 2. P(t) → {0,1} almost surely (the fixed points; the variance argument
@@ -200,12 +212,16 @@ The ensemble dynamics is the linear Lindblad equation, so Alice's local trace-pr
 operation cannot change Tr_A ρ — **the signal is exactly zero**. Numerically:
 
 - master-equation level: max signal = **0** (Alice measures) and **1.2×10⁻¹⁵** (Alice applies
-  a local unitary) — machine precision;
+  a local unitary) — machine precision. (This vanishing is an algebraic identity — no
+  trace-preserving map on Alice's factor can move Tr_A ρ — so the numerics here are a
+  consistency check of the implementation; the physical content is that the completed
+  model's ensemble dynamics *is* such a linear map);
 - trajectory level (4 000 runs): the branch-entangled (operator-sourced) ensemble agrees with
-  Alice's measured ensemble within the Monte-Carlo noise floor — the martingale property
-  E[P(t)] = ½ is precisely what makes the two ensembles coincide;
+  Alice's measured ensemble within the Monte-Carlo noise floor (≈ 8×10⁻³) — the martingale
+  property E[P(t)] = ½ is precisely what makes the two ensembles coincide;
 - instructively, the *naive* hybrid — keeping mean-field ⟨⟩-sourcing but adding collapse —
-  still signals a little (max residual 0.059 at λ = 2, falling to 0.015 at λ = 10): collapse
+  still signals a little (max residual 0.059 at λ = 2, falling to 0.015 at λ = 10, the
+  latter only about twice the MC floor): collapse
   alone tames the signal, but only the **right collapse prescription applied consistently to
   the full quantum system** (the article's own phrase) eliminates it identically. Study D is
   that prescription, exhibited.
@@ -263,3 +279,16 @@ causal by construction.
 All figures and every number quoted above regenerate with `run_all.py`
 (Python 3.14, numpy/scipy/matplotlib; fixed RNG seeds). Machine-readable values live in
 `results/*.json`.
+
+## References
+
+- N. Gisin, *Quantum measurements and stochastic processes*, Phys. Rev. Lett. **52**, 1657 (1984).
+- L. Diósi, *A universal master equation for the gravitational violation of quantum mechanics*, Phys. Lett. A **120**, 377 (1987).
+- L. Diósi, *Models for universal reduction of macroscopic quantum fluctuations*, Phys. Rev. A **40**, 1165 (1989).
+- P. Pearle, *Combining stochastic dynamical state-vector reduction with spontaneous localization*, Phys. Rev. A **39**, 2277 (1989).
+- R. Penrose, *On gravity's role in quantum state reduction*, Gen. Relativ. Gravit. **28**, 581 (1996).
+- I. M. Moroz, R. Penrose, and P. Tod, *Spherically-symmetric solutions of the Schrödinger–Newton equations*, Class. Quantum Grav. **15**, 2733 (1998).
+- A. Bassi, K. Lochan, S. Satin, T. P. Singh, and H. Ulbricht, *Models of wave-function collapse, underlying theories, and experimental tests*, Rev. Mod. Phys. **85**, 471 (2013).
+- A. Tilloy and L. Diósi, *Sourcing semiclassical gravity from spontaneously localized quantum matter*, Phys. Rev. D **93**, 024026 (2016).
+- K. Eppley and E. Hannah, *The necessity of quantizing the gravitational field*, Found. Phys. **7**, 51 (1977).
+- S. Donadi, K. Piscicchia, C. Curceanu, L. Diósi, M. Laubenstein, and A. Bassi, *Underground test of gravity-related wave function collapse*, Nat. Phys. **17**, 74 (2021).

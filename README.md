@@ -15,6 +15,11 @@ completed into its stochastic form (Diósi–Penrose dynamics with Tilloy–Dió
 sourcing). Each resolution is demonstrated numerically in this repository and written up in
 [REPORT.md](REPORT.md).
 
+The theoretical ingredients are standard collapse-model results (Gisin 1984; Diósi 1987/89;
+Pearle 1989; Tilloy–Diósi 2016 — full references in the report); the contribution here is
+assembling them explicitly against the article's three criticisms and verifying each
+numerically.
+
 | Study | Problem | File | Result |
 |---|---|---|---|
 | A | reproduce #1 | [src/sn_radial.py](src/sn_radial.py) | deterministic SN: packet settles to ground state but a runaway fraction escapes for good |
